@@ -1,0 +1,39 @@
+﻿using AbstractFactory;
+using System;
+namespace Abstract_Factory
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            MaterialFactory fabrica;
+            fabrica = new MaterialPresencialFactory();
+
+            Guia guia = fabrica.CrearGuia();
+            Examen examen = fabrica.CrearExamen();
+
+            guia.Mostrar();
+            examen.Aplicar();
+
+            Console.WriteLine("");
+
+            fabrica = new MaterialVirtualFactory();
+
+            guia = fabrica.CrearGuia();
+            examen = fabrica.CrearExamen();
+
+            guia.Mostrar();
+            examen.Aplicar();
+
+            fabrica = new MaterialHibridoFactory();
+
+            guia = fabrica.CrearGuia();
+            examen = fabrica.CrearExamen();
+
+            guia.Mostrar();
+            examen.Aplicar();
+
+            Console.ReadKey();
+        }
+    }
+}
